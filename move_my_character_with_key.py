@@ -13,16 +13,16 @@ def handle_events():
         if event.type == SDL_QUIT:
             running = False
         elif event.type == SDL_KEYDOWN:
-            if event.type == SDLK_RIGHT:
+            if event.key == SDLK_RIGHT:
                 dir += 1
-            elif event.type == SDLK_LEFT:
+            elif event.key == SDLK_LEFT:
                 dir -= 1
-            elif event.type == SDLK_ESCAPE:
+            elif event.key == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
-            if event.type == SDLK_RIGHT:
+            if event.key == SDLK_RIGHT:
                 dir -= 1
-            elif event.type == SDLK_LEFT:
+            elif event.key == SDLK_LEFT:
                 dir += 1
 
 
@@ -34,7 +34,7 @@ dir = 0
 
 while running:
     clear_canvas()
-    ground.draw(800 // 2,600 // 2)
+    ground.draw(800 // 2, 600 // 2)
     character.clip_draw(173, 345, 45, 100, x, 100)
     update_canvas()
     handle_events()
