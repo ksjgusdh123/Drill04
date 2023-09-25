@@ -1,10 +1,15 @@
 from pico2d import *
 
 open_canvas()
-character = load_image('sonic3.png')
+character = load_image('sonic.png')
 ground = load_image('TUK_GROUND.png')
 
 stand_index = [0,51,101,147,196,270]
+running_index = [-3,55,115,170, 170]
+jump_index_x = [0, 80, 0, 0, 0]
+jump_index_y = [150, 150, 245, 245, 245]
+down_index_x = [90, 165, 170, 170, 170]
+down_index_y = [260, 250, 152, 152, 152]
 
 def handle_events():
     global dir_x, dir_y, running
@@ -45,7 +50,19 @@ dir_y = 0
 while running:
     clear_canvas()
     ground.draw(800 // 2, 600 // 2)
-    character.clip_draw(173 + stand_index[frame], 345, 45, 100, x, y)
+    if(dir_y != 0):
+
+        pass
+    elif(dir_x != 0):
+        if(dir_x > 0):
+            character.clip_draw(250 + running_index[frame] + 5, 85, 50, 80, x, y)
+            pass
+        elif(dir_x < 0):
+            pass
+
+        pass
+    else:
+        character.clip_draw(173 + stand_index[frame], 345, 45, 100, x, y)
     update_canvas()
     handle_events()
     frame = (frame + 1) % 5
