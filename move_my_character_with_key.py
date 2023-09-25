@@ -73,7 +73,7 @@ while running:
     if(dir_x > 0):
         if(x < 700):
             x += dir_x * 5
-    elif (dir_x < 0):
+    elif (dir_x < 0): 
         if (x > 50):
             x += dir_x * 5
 
