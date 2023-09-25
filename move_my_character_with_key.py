@@ -24,8 +24,10 @@ def handle_events():
             elif event.key == SDLK_LEFT:
                 dir_x -= 1
             elif event.key == SDLK_UP:
+                frame = -1
                 dir_y += 1
             elif event.key == SDLK_DOWN:
+                frame = -1
                 dir_y -= 1
             elif event.key == SDLK_ESCAPE:
                 running = False
@@ -51,17 +53,18 @@ while running:
     clear_canvas()
     ground.draw(800 // 2, 600 // 2)
     if(dir_y != 0):
-
-        pass
+        if(dir_y > 0):
+            if(dir_x > 0):
+                character.clip_draw(20 + jump_index_x[frame], jump_index_y[frame], 65, 105, x, y)
+            else:
+                character.clip_composite_draw(20 + jump_index_x[frame], jump_index_y[frame], 65, 105, 0, 'h', x, y, 65, 105)
+        elif (dir_y < 0):
+            character.clip_draw(20 + down_index_x[frame], down_index_y[frame], 55, 95, x, y)
     elif(dir_x != 0):
         if(dir_x > 0):
             character.clip_draw(255 + running_index[frame], 85, 50, 80, x, y, 45, 100)
-            pass
         elif(dir_x < 0):
             character.clip_composite_draw(255 + running_index[frame], 85, 50, 80, 0, 'h', x, y, 45, 100)
-            pass
-
-        pass
     else:
         character.clip_draw(173 + stand_index[frame], 345, 45, 100, x, y, 45, 100)
     update_canvas()
@@ -69,6 +72,6 @@ while running:
     frame = (frame + 1) % 5
     x += dir_x * 5
     y += dir_y * 5
-    delay(0.05)
+    delay(0.07)
 
 close_canvas()
