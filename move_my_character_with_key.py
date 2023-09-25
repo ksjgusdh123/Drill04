@@ -55,14 +55,15 @@ while running:
         pass
     elif(dir_x != 0):
         if(dir_x > 0):
-            character.clip_draw(250 + running_index[frame] + 5, 85, 50, 80, x, y)
+            character.clip_draw(255 + running_index[frame], 85, 50, 80, x, y, 45, 100)
             pass
         elif(dir_x < 0):
+            character.clip_composite_draw(255 + running_index[frame], 85, 50, 80, 0, 'h', x, y, 45, 100)
             pass
 
         pass
     else:
-        character.clip_draw(173 + stand_index[frame], 345, 45, 100, x, y)
+        character.clip_draw(173 + stand_index[frame], 345, 45, 100, x, y, 45, 100)
     update_canvas()
     handle_events()
     frame = (frame + 1) % 5
